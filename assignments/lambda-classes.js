@@ -32,6 +32,7 @@ class Student extends Person {
         this.newObjectPreviousBackground = studentAttributes.previousBackground;
         this.newObjectClassName = studentAttributes.className;
         this.newObjectFavSubjects = studentAttributes.favSubjects;
+        this.newObjectGrade = studentAttributes.grade
     }
     listsSubjects() {
         return `${this.newObjectFavSubjects}`;
@@ -41,6 +42,20 @@ class Student extends Person {
     }
     sprintChallenge(subject) {
         return `${this.newObjectName} has begun sprint challenge on ${subject}.`;
+    }
+    graduate() {
+        if(this.newObjectGrade >= 70) {
+            return `With a final score of ${this.newObjectGrade}%, ${this.newObjectName} has graduated!`
+        } else if(this.newObjectGrade < 70) {
+            return `With a final score of ${this.newObjectGrade}%, ${this.newObjectName} has failed. Let's get into Flex and see if we can do better next time!`
+        }
+    }
+
+
+    heroDeath() {
+        if (this.healthPoints === 0) {
+            return `${this.name} has died! The Villain will reign unopposed!`
+        }
     }
 }// Child
 
@@ -85,6 +100,7 @@ const billy = new Student({
     gender: 'male',
     className: 'Web18',
     favSubjects: 'HTML',
+    grade: 68,
 });
 
 const napoleon = new Student({
@@ -94,6 +110,7 @@ const napoleon = new Student({
     gender: 'male',
     className: 'Web18',
     favSubjects: 'JavaScript',
+    grade: 94,
 });
 
 const sigmund = new ProjectManager({
@@ -124,3 +141,5 @@ console.log(napoleon.sprintChallenge('Javascript'));
 console.log(sigmund.standUp('help'));
 console.log(genghis.debugsCode(napoleon, 'CSS'));
 console.log(napoleon.speak());
+console.log(napoleon.graduate());
+console.log(billy.graduate());
